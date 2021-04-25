@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+    <h1>Встроенные системы</h1>
+    <h3>Введите новую комманду</h3>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.body }}
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>       
+    </form>
+    
+    <a href="{% url 'clear_commands' %}"><button class="btn btn-primary">Очистить файл ввода комманд</button></a>
+
+    <p>Текущие команды</p>
+    {% for line in lines %}
+        <li>
+            {{ line }}
+        </li>
+    {% endfor %}
+    <br>
+{% endblock %}
